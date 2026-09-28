@@ -1,68 +1,28 @@
 import { useEffect } from "react";
 
-/** Document scrolling stays available while mobile keyboards resize the visual viewport. */
+/** Let the browser reveal focused fields; only toggle the static focus treatment. */
 export function KeyboardViewport() {
   useEffect(() => {
-    const viewport = window.visualViewport;
     const html = document.documentElement;
-    let timer = 0;
-    let followup = 0;
-    const editable = () => {
-      const el = document.activeElement;
-      return el instanceof HTMLElement &&
-        el.id !== "keyboard-bridge" &&
-        el.matches(
-          "input:not([type=radio]):not([type=checkbox]), textarea, [contenteditable=true]",
-        )
-        ? el
-        : null;
-    };
-    const update = () => {
-      const field = editable();
-      const overlap =
-        field && viewport
-          ? Math.max(
-              0,
-              window.innerHeight - viewport.height - viewport.offsetTop,
-            )
-          : 0;
-      html.style.setProperty(
-        "--visible-viewport-height",
-        `${viewport?.height || window.innerHeight}px`,
+    const isEditable = (target: EventTarget | null) =>
+      target instanceof HTMLElement &&
+      target.id !== "keyboard-bridge" &&
+      target.matches(
+        'input:not([type=radio]):not([type=checkbox]):not([type=button]):not([type=submit]):not([type=hidden]), textarea, [contenteditable="true"]',
       );
-      html.style.setProperty("--keyboard-overlap", `${overlap}px`);
-      html.classList.toggle("keyboard-open", overlap > 80);
-      if (!field || !viewport || overlap < 80) return;
-      clearTimeout(timer);
-      timer = window.setTimeout(() => {
-        const rect = field.getBoundingClientRect();
-        const center = viewport.offsetTop + viewport.height * 0.45;
-        const delta =
-          rect.top + Math.min(rect.height, viewport.height * 0.4) / 2 - center;
-        const sheetBody = field.closest<HTMLElement>(".bottom-sheet__body");
-        if (Math.abs(delta) > 12)
-          (sheetBody || window).scrollBy({ top: delta, behavior: "instant" });
-      }, 100);
+    const focusIn = (event: FocusEvent) => {
+      html.classList.toggle("input-focused", isEditable(event.target));
     };
-    const focus = () => {
-      update();
-      clearTimeout(followup);
-      followup = window.setTimeout(update, 350);
+    const focusOut = (event: FocusEvent) => {
+      html.classList.toggle("input-focused", isEditable(event.relatedTarget));
     };
-    viewport?.addEventListener("resize", update);
-    viewport?.addEventListener("scroll", update);
-    document.addEventListener("focusin", focus);
-    document.addEventListener("focusout", focus);
+    html.classList.toggle("input-focused", isEditable(document.activeElement));
+    document.addEventListener("focusin", focusIn);
+    document.addEventListener("focusout", focusOut);
     return () => {
-      clearTimeout(timer);
-      clearTimeout(followup);
-      viewport?.removeEventListener("resize", update);
-      viewport?.removeEventListener("scroll", update);
-      document.removeEventListener("focusin", focus);
-      document.removeEventListener("focusout", focus);
-      html.style.removeProperty("--keyboard-overlap");
-      html.style.removeProperty("--visible-viewport-height");
-      html.classList.remove("keyboard-open");
+      document.removeEventListener("focusin", focusIn);
+      document.removeEventListener("focusout", focusOut);
+      html.classList.remove("input-focused");
     };
   }, []);
   return null;
