@@ -1,0 +1,14 @@
+.mentor-feed-continuation,
+.mentor-feed-loading {
+  margin-top: 12px;
+}
+.mentor-feed-sentinel {
+  height: 1px;
+}
+.mentor-feed-end {
+  padding: 24px 12px 12px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 18px;
+  color: #606060;
+}

@@ -1,0 +1,397 @@
+.screen.auth-screen {
+  padding: max(8px, env(safe-area-inset-top)) 16px
+    max(24px, env(safe-area-inset-bottom));
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+.auth-back-row {
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+.auth-back {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid #ebebeb;
+  background: #fff;
+}
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: calc(100svh - 100px);
+}
+.auth-heading {
+  padding-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.auth-heading h1 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: -0.03em;
+}
+.auth-heading p {
+  color: #606060;
+  font-size: 15px;
+  line-height: 21px;
+}
+.auth-providers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 28px;
+}
+.auth-providers button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 12px 20px;
+  border: 1px solid #dadad4;
+  border-radius: 27px;
+  background: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+.auth-providers button span {
+  flex: 1;
+}
+.auth-providers button i {
+  width: 20px;
+}
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 0;
+  font-size: 13px;
+  color: #666;
+}
+.auth-divider span {
+  flex: 1;
+  height: 1px;
+  background: #e2e3dd;
+}
+.auth-email input {
+  width: 100%;
+  height: 54px;
+  border: 1px solid #e2e3dd;
+  border-radius: 16px;
+  background: #fff;
+  padding: 0 18px;
+  font-size: 16px;
+}
+.auth-email p,
+.auth-code p {
+  padding: 8px 4px 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 18px;
+}
+.auth-footer {
+  margin-top: auto;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.auth-footer .button {
+  width: 100%;
+  min-height: 54px;
+}
+.auth-footer > p {
+  font-size: 12px;
+  line-height: 17px;
+  color: #666;
+  text-align: center;
+}
+.auth-address {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 15px;
+  margin-top: -8px;
+}
+.auth-address strong {
+  overflow-wrap: anywhere;
+  min-width: 0;
+  font-weight: 600;
+}
+.auth-address button,
+.auth-resend button {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  min-height: 44px;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+.auth-code {
+  margin-top: 28px;
+}
+.otp-field {
+  position: relative;
+  cursor: text;
+}
+.otp-field > input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 60px;
+  opacity: 0.01;
+  font-size: 16px;
+  color: transparent;
+  caret-color: transparent;
+  border: 0;
+  z-index: 1;
+}
+.otp-field > input:focus-visible {
+  outline: none;
+}
+.otp-boxes {
+  display: flex;
+  gap: 8px;
+}
+.otp-boxes span {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  min-width: 0;
+  height: 60px;
+  background: #fff;
+  border: 1px solid #e2e3dd;
+  border-radius: 14px;
+  font-size: 26px;
+  font-weight: 600;
+}
+.otp-boxes span.is-current {
+  border: 1.5px solid #222;
+}
+.auth-resend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 4px 0;
+  color: #606060;
+  font-size: 14px;
+}
+.auth-resend button {
+  color: #222;
+  font-weight: 600;
+}
+.screen.splash-screen {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 max(24px, env(safe-area-inset-bottom));
+}
+.splash-mosaic {
+  position: relative;
+  flex: 1;
+  min-height: 390px;
+  max-height: 520px;
+  overflow: hidden;
+}
+.splash-mosaic::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #fafafa 0,
+    #fafafad9 40px,
+    transparent 90px,
+    transparent 60%,
+    #fafafaeb 88%,
+    #fafafa 100%
+  );
+  pointer-events: none;
+}
+.splash-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  width: 28.5%;
+}
+.splash-column .fade-image {
+  height: 148px;
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.splash-column .fade-image img {
+  object-fit: cover;
+  object-position: 50% 25%;
+}
+.splash-column--one {
+  left: -11.2%;
+  top: -70px;
+}
+.splash-column--two {
+  left: 19.85%;
+  top: -8px;
+}
+.splash-column--two > .fade-image:first-child img {
+  transform: scale(1.18);
+  object-position: 50% 40%;
+}
+.splash-column--three {
+  left: 50.9%;
+  top: -44px;
+}
+.splash-column--four {
+  left: 81.93%;
+  top: -34px;
+}
+.splash-tile {
+  min-height: 112px;
+  border-radius: 18px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.splash-tile--honda {
+  background: #d6001c;
+  color: #fff;
+}
+.splash-tile--honda img {
+  width: 64px;
+  height: 16px;
+  object-fit: contain;
+  object-position: left;
+  filter: brightness(0) invert(1);
+}
+.splash-tile strong {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  display: block;
+}
+.splash-tile small {
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 500;
+  display: block;
+}
+.splash-tile--grant {
+  background: #ffcc00;
+}
+.splash-tile--grant strong {
+  font-size: 28px;
+  line-height: 30px;
+  letter-spacing: -0.04em;
+}
+.splash-copy {
+  position: relative;
+  padding: 0 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: -20px;
+}
+.splash-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+.splash-brand strong {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.splash-brand span {
+  font-size: 12px;
+  line-height: 16px;
+  color: #606060;
+  font-weight: 500;
+}
+.splash-copy h1 {
+  font-size: clamp(30px, 9.67vw, 38px);
+  line-height: 1.105263;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -0.04em;
+}
+.splash-copy h1 span {
+  display: block;
+  white-space: nowrap;
+}
+.splash-copy p {
+  text-align: center;
+  font-size: 16px;
+  line-height: 23px;
+  color: #606060;
+}
+.splash-actions {
+  padding: 32px 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.splash-actions .button {
+  min-height: 56px;
+  width: 100%;
+  font-size: 17px;
+}
+.splash-actions > div {
+  text-align: center;
+  color: #606060;
+  font-size: 15px;
+}
+.splash-actions > div button {
+  font-weight: 600;
+  color: #222;
+  min-height: 44px;
+  padding: 0 4px;
+}
+@media (max-height: 720px) {
+  .splash-mosaic {
+    min-height: 260px;
+  }
+  .splash-copy {
+    margin-top: -12px;
+  }
+}
+
+.auth-screen > .screen-main,
+.splash-screen > .screen-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+/* The mosaic keeps its approved tile typography while narrower phones crop the edges. */
+.splash-column {
+  width: 112px;
+}
+.splash-column--one {
+  left: calc(50% - 240.5px);
+}
+.splash-column--two {
+  left: calc(50% - 118.5px);
+}
+.splash-column--three {
+  left: calc(50% + 3.5px);
+}
+.splash-column--four {
+  left: calc(50% + 125.5px);
+}
+.splash-tile--honda small {
+  color: #fff;
+}
+.splash-tile--grant small {
+  color: #222;
+}

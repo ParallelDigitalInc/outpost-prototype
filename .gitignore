@@ -1,0 +1,18 @@
+node_modules/
+dist/
+.DS_Store
+.env*
+!.env.example
+playwright-report/
+test-results/
+qa/*.png
+*.tsbuildinfo
+qa-results/
+
+# Internal working notes, not part of the published prototype
+BRIEF.md
+REVIEW.md
+PROGRESS.md
+design-reference/
+references/
+qa/

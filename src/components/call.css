@@ -1,0 +1,48 @@
+.call-page {
+  min-height: 100svh;
+  background: #202124;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: max(24px, env(safe-area-inset-top)) 24px
+    max(24px, env(safe-area-inset-bottom));
+}
+.call-brand {
+  align-self: flex-start;
+  font-size: 20px;
+  font-weight: 600;
+}
+.call-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 20px;
+  width: 100%;
+  padding: 40px 0;
+  text-align: center;
+}
+.call-portrait {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+}
+.call-content h1 {
+  font-size: 28px;
+}
+.call-content p {
+  font-size: 18px;
+  color: #e8eaed;
+}
+.call-content .button {
+  margin-top: 28px;
+  min-width: 160px;
+  background: #e94335;
+  color: white;
+}
+.call-footer {
+  color: #b5b8bd;
+  font-size: 13px;
+}
